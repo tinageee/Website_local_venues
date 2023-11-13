@@ -29,6 +29,7 @@ public class Venue {
 
     private String name;
     private String location;
+    private int zipCode;
     private String description;
     private String facilityDetails;
     private String openingHours;

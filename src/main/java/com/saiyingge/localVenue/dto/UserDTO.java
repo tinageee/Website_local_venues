@@ -27,8 +27,10 @@ public class UserDTO {
     @Size(max = 100)
     private String lastName;
 
+    private String username;
     @Email(message = "Provide correct email")
     private String email;
+
 
     @NotEmpty(message = "Please provide correct password")
     @Size(min = 8, max = 40)

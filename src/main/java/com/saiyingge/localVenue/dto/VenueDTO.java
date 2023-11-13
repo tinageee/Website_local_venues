@@ -16,6 +16,7 @@ public class VenueDTO {
     private Long id;
     private String name;
     private String location;
+    private int zipCode;
     private String description;
     private String facilityDetails;
     private String openingHours;
