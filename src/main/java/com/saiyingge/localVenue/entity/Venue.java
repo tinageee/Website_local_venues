@@ -12,7 +12,8 @@ import lombok.Setter;
 import lombok.ToString;
 import jakarta.persistence.*;
 
-import java.util.Set;
+import java.util.List;
+
 
 
 @Entity
@@ -35,7 +36,7 @@ public class Venue {
     private String fee;
 
     @OneToMany(mappedBy = "venue")
-    private Set<Review> reviews;
+    private List<Review> reviews;
 
     @ManyToMany
     @JoinTable(
@@ -43,5 +44,5 @@ public class Venue {
             joinColumns = @JoinColumn(name = "venue_id"),
             inverseJoinColumns = @JoinColumn(name = "vendor_id")
     )
-    private Set<Vendor> vendors;
+    private List<Vendor> vendorsList;
 }

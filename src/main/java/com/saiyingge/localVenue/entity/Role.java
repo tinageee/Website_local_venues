@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author Saiying Ge
@@ -32,5 +32,5 @@ public class Role {
     }
 
     @OneToMany(mappedBy = "role")
-    private Set<User> users;
+    private List<User> users;
 }

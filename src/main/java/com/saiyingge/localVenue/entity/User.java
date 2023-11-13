@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Collection;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Entity class representing a User in the application.
@@ -44,5 +44,5 @@ public class User {
     private Collection<Role> roles;
 
     @OneToMany(mappedBy = "user")
-    private Set<Review> reviews;
+    private List<Review> reviewsList;
 }

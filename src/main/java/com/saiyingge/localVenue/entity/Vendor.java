@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author Saiying Ge
@@ -14,6 +14,7 @@ import java.util.Set;
  *
  * @author S.G
 */
+
 @Entity
 @Getter
 @Setter
@@ -29,7 +30,7 @@ public class Vendor {
     private String description;
     private String contactInformation;
 
-    @ManyToMany(mappedBy = "vendors")
-    private Set<Venue> venues;
+    @ManyToMany(mappedBy = "vendorsList")
+    private List<Venue> venuesList;
 
 }
