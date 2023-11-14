@@ -10,9 +10,10 @@ import java.util.Optional;
 
 @Repository
 public interface RoleRepository extends CrudRepository<Role, Long> {
-    Optional<Role> findByRoleName(String roleName);
+    public Role findRoleByName(String name);
 
     @Query(value = "select * from role where role.id=(select role_id from user_roles where user_id = :id)", nativeQuery = true)
     public List<Role> findRoleByUserId (int id);
+
 }
 

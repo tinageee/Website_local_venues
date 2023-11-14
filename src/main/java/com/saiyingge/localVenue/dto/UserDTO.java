@@ -11,9 +11,6 @@ import lombok.Setter;
 import java.util.List;
 import java.util.Set;
 
-/**
- * @author Igor Adulyan
- */
 @Setter
 @Getter
 @NoArgsConstructor

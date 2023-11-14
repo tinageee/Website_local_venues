@@ -20,4 +20,5 @@ public class ReviewDTO {
     private Long userId;
     private Long venueId;
     private Long vendorId;
+    private String date;
 }

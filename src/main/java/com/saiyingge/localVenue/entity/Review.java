@@ -39,5 +39,7 @@ public class Review {
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
 
+    private String date;
+
 
 }

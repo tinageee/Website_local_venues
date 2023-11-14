@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
     // Custom methods can be added here, for example:
-    Optional<User> findByUsername(String username);
-    Optional<User> findByEmail(String email);
+
+    Optional<User> findUserByEmail(String email);
 }
