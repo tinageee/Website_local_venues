@@ -7,6 +7,7 @@ businesses.
 
 ## Overview
 This document outlines the database schema for the Local Venues application, detailing the entities, their attributes, and relationships.
+Please insert data with `[DataCreation.sql](DataCreation.sql)`.
 
 ## Entities and Attributes
 
@@ -26,9 +27,9 @@ This document outlines the database schema for the Local Venues application, det
 
 ### Vendor
 - **ID:** Primary Key, INT. A unique identifier for each vendor.
-- **Name:** VARCHAR(255). The name of the vendor.
+- **Name:**  The name of the vendor.
 - **Description:** TEXT. A description of the services or goods provided by the vendor.
-- **Contact Information:** VARCHAR(255). Contact details of the vendor.
+- **Contact Information:**  Contact details of the vendor.
 - **Website:** The website of the venue.
 
 ### User
