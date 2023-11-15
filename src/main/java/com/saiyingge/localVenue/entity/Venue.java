@@ -25,7 +25,7 @@ import java.util.List;
 public class Venue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String name;
     private String location;

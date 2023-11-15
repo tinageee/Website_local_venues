@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 @Service
@@ -20,7 +21,7 @@ public class VenueServiceImpl implements VenueService {
     @Autowired
     public VenueServiceImpl(VenueRepository venueRepository, ModelMapper modelMapper) {
         this.venueRepository = venueRepository;
-        this.modelMapper = this.modelMapper;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -43,7 +44,7 @@ public class VenueServiceImpl implements VenueService {
 
 
     @Override
-    public VenueDTO getVenueById(Long id) {
+    public VenueDTO getVenueById(long id) {
         Venue venue = venueRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Venue not found for id: " + id));
         return modelMapper.map(venue, VenueDTO.class);

@@ -11,5 +11,6 @@ public interface VendorService {
 
     List<Vendor> getAllVendors();
 
+
     VendorDTO getVendorById(long id);
 }

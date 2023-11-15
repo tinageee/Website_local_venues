@@ -31,22 +31,5 @@ public class UserAccountController {
 
         return "account";
     }
-//    @GetMapping("/account")
-//    public String account(Model model) {
-//        model.addAttribute("reviewList", Arrays.asList("Review 1", "Review 2", "Review 3"));
-//        return "account";
-//    }
 
-//    @GetMapping("/account")
-//    public String account(Model model) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String currentUserName = authentication.getName();
-//        // Assuming the username is the user's ID
-//        // You might need to modify this part to suit how your user identification is set up
-//        int userId = Integer.parseInt(currentUserName);
-//
-//        model.addAttribute("review-list", reviewService.getReviewByUserId(userId));
-//
-//        return "account";
-//    }
 }

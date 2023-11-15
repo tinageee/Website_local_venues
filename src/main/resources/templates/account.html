@@ -17,25 +17,39 @@
 <!--    </ul>-->
 <!--</div>-->
 
-<div>
-    <h2>Your Reviews</h2>
-    <div th:if="${reviewList != null}">
-        <p>No reviews available.</p>
-    </div>
-    <div th:unless="${reviewList == null}">
-        <ul>
-            <p> reviews available.</p>
+<!--<div>-->
+<!--    <h2>Your Reviews</h2>-->
+<!--    <div th:if="${reviewList != null}">-->
+<!--        <p>No reviews available.</p>-->
+<!--    </div>-->
+<!--    <div th:unless="${reviewList == null}">-->
+<!--        <ul>-->
+<!--            <p> reviews available.</p>-->
 <!--            <li th:each="review : ${reviewList}">-->
 <!--                <p th:text="${reviewList}"></p>-->
 <!--            </li>-->
-<!--            <li th:each="review : ${review-list}">-->
-<!--                <span th:text="${review.id}">Review Id</span>:-->
+<!--            <li th:each="review : ${reviewList}">-->
+<!--&lt;!&ndash;                <span th:text="${review.id}">Review Id</span>:&ndash;&gt;-->
 <!--                <span th:text="${review.content}">Review Content</span>-->
-<!--                &lt;!&ndash; Add more review details as needed &ndash;&gt;-->
 <!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
+<div>
+    <h2>Your Reviews</h2>
+    <div th:if="${reviewList == null or reviewList.isEmpty()}">
+        <p>No reviews available.</p>
+    </div>
+    <div th:unless="${reviewList == null or reviewList.isEmpty()}">
+        <p>Reviews available:</p>
+        <ul>
+            <li th:each="review : ${reviewList}">
+                <span th:text="${review.content}">Review Content</span>
+            </li>
         </ul>
     </div>
 </div>
+
 <!-- Display Reviews -->
 
 

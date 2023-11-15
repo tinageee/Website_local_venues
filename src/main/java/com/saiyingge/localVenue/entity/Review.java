@@ -22,7 +22,7 @@ import jakarta.persistence.*;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String content;
     private Integer rating;

@@ -44,16 +44,16 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public List<Review> getReviewByUserId(int userId) {
+    public List<Review> getReviewByUserId(long userId) {
         return reviewRepository.findByUserId(userId);
     }
 
     @Override
-    public List<Review> getReviewByVenueID(int venueId) {
+    public List<Review> getReviewByVenueID(long venueId) {
         return reviewRepository.findByVenueId(venueId);
     }
     @Override
-    public List<Review> getReviewByVendorId(int vendorId) {
+    public List<Review> getReviewByVendorId(long vendorId) {
         return reviewRepository.findByVendorId(vendorId);
     }
 

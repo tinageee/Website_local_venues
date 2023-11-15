@@ -1,6 +1,7 @@
 package com.saiyingge.localVenue.dto;
 
 import com.saiyingge.localVenue.entity.Review;
+import com.saiyingge.localVenue.entity.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Setter
 @Getter
 @NoArgsConstructor
-public class UserDTO {
+public class UserDTO extends User {
 
     @NotEmpty(message = "Can't be empty string")
     @Size(max = 100)
@@ -41,4 +42,6 @@ public class UserDTO {
     private List<RoleDTO> RoleDTOList;
 
     private List<ReviewDTO> ReviewDTOList;
+
+
 }

@@ -2,6 +2,8 @@ package com.saiyingge.localVenue.serviceTest;
 
 
 import com.saiyingge.localVenue.dto.VendorDTO;
+import com.saiyingge.localVenue.dto.VenueDTO;
+import com.saiyingge.localVenue.entity.Venue;
 import com.saiyingge.localVenue.repository.VendorRepository;
 import com.saiyingge.localVenue.service.VendorServicelmpl;
 import com.saiyingge.localVenue.entity.Vendor;
@@ -20,6 +22,8 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
+
+import static org.mockito.ArgumentMatchers.anyLong; // Import necessary Mockito classes
 
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class VendorServiceTest {
@@ -83,6 +87,7 @@ public class VendorServiceTest {
     public void testGetVendorById() {
         Vendor vendor = new Vendor();
         vendor.setId(10); // Set any necessary fields for the vendor
+        vendor.setDescription("test description");
 
         // Mock the behavior of the repository
         when(vendorRepository.findById(10L)).thenReturn(Optional.of(vendor));
@@ -96,7 +101,11 @@ public class VendorServiceTest {
 
         // Assert that the result is not null
         assertNotNull(result);
+        assertEquals(VendorDTO.class, result.getClass());
+        assertEquals(vendor.getDescription(), result.getDescription());
 
 
     }
+
+
 }

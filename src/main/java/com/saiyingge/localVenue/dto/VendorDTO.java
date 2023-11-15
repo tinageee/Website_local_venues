@@ -1,5 +1,6 @@
 package com.saiyingge.localVenue.dto;
 
+import com.saiyingge.localVenue.entity.Vendor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,4 +19,5 @@ public class VendorDTO {
     private String contactInformation;
     private String website;
     private List<VenueDTO> VenueDTOList;
+
 }

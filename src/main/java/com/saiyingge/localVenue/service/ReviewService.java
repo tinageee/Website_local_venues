@@ -9,11 +9,11 @@ public interface ReviewService {
     public void saveReview(ReviewDTO reviewDTO);
     public List<Review> getAllReviews();
 
-    List<Review> getReviewByUserId(int userId);
+    List<Review> getReviewByUserId(long userId);
 
-    List<Review> getReviewByVenueID(int id);
+    List<Review> getReviewByVenueID(long id);
 
-    List<Review> getReviewByVendorId(int vendorId);
+    List<Review> getReviewByVendorId(long vendorId);
 
 
 

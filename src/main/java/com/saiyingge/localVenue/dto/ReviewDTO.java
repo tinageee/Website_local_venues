@@ -1,5 +1,6 @@
 package com.saiyingge.localVenue.dto;
 
+import com.saiyingge.localVenue.entity.Review;
 import com.saiyingge.localVenue.entity.Vendor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,8 +13,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-public class ReviewDTO {
-    private int id;
+public class ReviewDTO extends Review {
+    private long id;
     private String content;
     private Integer rating;
 

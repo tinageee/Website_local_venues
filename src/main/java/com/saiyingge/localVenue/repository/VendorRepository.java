@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface VendorRepository extends CrudRepository<Vendor, Long> {
 
-    VendorDTO findById(int id);
+//    VendorDTO findById(long id);
 }
 

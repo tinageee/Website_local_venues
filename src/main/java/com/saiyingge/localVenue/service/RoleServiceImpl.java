@@ -33,7 +33,7 @@ public class RoleServiceImpl implements RoleService{
 
     @Override
     @Transactional
-    public List<Role> findRolesByUserId(int id) {
+    public List<Role> findRolesByUserId(long id) {
         return roleRepository.findRoleByUserId(id);
 
     }

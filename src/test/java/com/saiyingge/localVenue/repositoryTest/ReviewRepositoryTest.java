@@ -25,8 +25,6 @@ import java.util.UUID;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-
-
 public class ReviewRepositoryTest {
 
     @Autowired

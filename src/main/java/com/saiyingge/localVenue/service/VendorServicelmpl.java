@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 
 @Service
@@ -33,14 +34,11 @@ public class VendorServicelmpl implements VendorService {
         return (List<Vendor>) vendorRepository.findAll();
     }
 
+
     @Override
     public VendorDTO getVendorById(long id) {
         Vendor vendor = vendorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Vendor not found for id: " + id));
         return modelMapper.map(vendor, VendorDTO.class);
     }
-
-
-
-
 }
