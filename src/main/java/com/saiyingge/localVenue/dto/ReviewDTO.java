@@ -13,12 +13,12 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class ReviewDTO {
-    private Long id;
+    private int id;
     private String content;
     private Integer rating;
 
-    private Long userId;
-    private Long venueId;
-    private Long vendorId;
+    private int userId;
+    private int venueId;
+    private int vendorId;
     private String date;
 }

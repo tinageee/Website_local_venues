@@ -31,6 +31,6 @@ public class Role {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
+//    @OneToMany(mappedBy = "role")
+//    private List<User> users;
 }

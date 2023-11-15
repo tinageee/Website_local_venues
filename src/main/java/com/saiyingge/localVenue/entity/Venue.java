@@ -29,12 +29,14 @@ public class Venue {
 
     private String name;
     private String location;
-    private int zipCode;
     private String description;
     private String facilityDetails;
     private String openingHours;
     private String type;
     private String fee;
+    private int zipCode;
+    private String contactInformation;
+    private String website;
 
     @OneToMany(mappedBy = "venue")
     private List<Review> reviews;

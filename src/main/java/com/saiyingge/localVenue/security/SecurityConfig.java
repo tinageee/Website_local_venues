@@ -1,7 +1,7 @@
 package com.saiyingge.localVenue.security;
 
-import com.saiyingge.localVenue.service.VenueService;
 import com.saiyingge.localVenue.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +44,9 @@ public class SecurityConfig {
                                         "/form", "/sign-up-process", "/confirmation-page",
                                         "/login").permitAll()
                                 .requestMatchers("/account")
-                                .hasAnyRole("VENUE","VENDOR","USER")
+//                                remove the constraint of role
+                                .hasAnyRole("USER")
+//                                .authenticated()
                                 .anyRequest().authenticated())
                 .formLogin(form -> form.loginPage("/login")
                         .loginProcessingUrl("/login")
@@ -58,6 +60,14 @@ public class SecurityConfig {
 
         return http.build();
 
+    }
+
+    //        add due to eroor code:Action:
+//
+//Consider defining a bean of type 'org.modelmapper.ModelMapper' in your configuration.
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 
 }

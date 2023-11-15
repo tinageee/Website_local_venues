@@ -29,6 +29,8 @@ public class Vendor {
     private String name;
     private String description;
     private String contactInformation;
+    private String website;
+
 
     @ManyToMany(mappedBy = "vendorsList")
     private List<Venue> venuesList;

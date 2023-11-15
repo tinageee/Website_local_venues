@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface VenueRepository extends CrudRepository<Venue, Long> {
 //    find by zipcodes
-    List<Venue> findByZipcode(String zipcode);
+    List<Venue> findByZipCode(int zipCode);
 
 }

@@ -37,8 +37,8 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public List<VenueDTO> findByZipcode(String zipcode) {
-        List<Venue> venues = venueRepository.findByZipcode(zipcode);
+    public List<VenueDTO> getbyZipcode(int zipCode) {
+        List<Venue> venues = venueRepository.findByZipCode(zipCode);
         return venues.stream()
                 .map(venue -> modelMapper.map(venue, VenueDTO.class))
                 .collect(Collectors.toList());

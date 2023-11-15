@@ -4,6 +4,7 @@ import com.saiyingge.localVenue.dto.ReviewDTO;
 import com.saiyingge.localVenue.entity.Review;
 import com.saiyingge.localVenue.entity.Venue;
 import com.saiyingge.localVenue.repository.ReviewRepository;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,16 +38,16 @@ public class ReviewServiceImpl implements ReviewService {
 
 
     @Override
+    @Transactional
     public List<Review> getAllReviews() {
         return (List<Review>) reviewRepository.findAll();
     }
 
 
     @Override
-    public ReviewDTO getReviewById(Long id) {
-        Review review = reviewRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Review not found for id: " + id));
-        return convertToDto(review);
+    @Transactional
+    public List<Review> getReviewByUserId(int userId) {
+        return reviewRepository.findByUserId(userId);
     }
 
     @Override
@@ -77,12 +78,12 @@ public class ReviewServiceImpl implements ReviewService {
 //    }
 
     // Helper method to convert Review entity to ReviewDTO
-    private ReviewDTO convertToDto(Review review) {
-        ReviewDTO reviewDTO = new ReviewDTO();
-        // Map fields from Review to ReviewDTO
-         reviewDTO.setId(review.getId());
-
-        return reviewDTO;
-    }
+//    private ReviewDTO convertToDto(Review review) {
+//        ReviewDTO reviewDTO = new ReviewDTO();
+//        // Map fields from Review to ReviewDTO
+//         reviewDTO.setId(review.getId());
+//
+//        return reviewDTO;
+//    }
 
 }

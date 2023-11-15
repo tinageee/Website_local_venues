@@ -16,5 +16,6 @@ public class VendorDTO {
     private String name;
     private String description;
     private String contactInformation;
+    private String website;
     private List<VenueDTO> VenueDTOList;
 }
