@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class VendorServicelmpl implements VendorService {
@@ -24,13 +23,21 @@ public class VendorServicelmpl implements VendorService {
 
 
     @Override
-    public void saveVendor(Vendor vendor) {
-        vendorRepository.save(vendor);
+    public Vendor saveVendor(Vendor vendor) {
+        return vendorRepository.save(vendor);
     }
+
 
     @Override
     public List<Vendor> getAllVendors() {
         return (List<Vendor>) vendorRepository.findAll();
+    }
+
+    @Override
+    public VendorDTO getVendorById(long id) {
+        Vendor vendor = vendorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vendor not found for id: " + id));
+        return modelMapper.map(vendor, VendorDTO.class);
     }
 
 

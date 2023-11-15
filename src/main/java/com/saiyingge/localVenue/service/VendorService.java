@@ -7,10 +7,9 @@ import java.util.List;
 
 public interface VendorService {
 
-    void saveVendor(Vendor vendor);
+    Vendor saveVendor(Vendor vendor);
 
     List<Vendor> getAllVendors();
-//
-//    List<VendorDTO> findByZipcode(String zipcode);
 
+    VendorDTO getVendorById(long id);
 }

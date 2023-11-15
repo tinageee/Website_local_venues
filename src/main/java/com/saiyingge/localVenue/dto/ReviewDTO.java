@@ -21,4 +21,5 @@ public class ReviewDTO {
     private int venueId;
     private int vendorId;
     private String date;
+
 }

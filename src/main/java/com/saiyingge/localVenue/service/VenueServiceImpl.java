@@ -4,13 +4,10 @@ import com.saiyingge.localVenue.dto.VenueDTO;
 import com.saiyingge.localVenue.entity.Venue;
 import com.saiyingge.localVenue.repository.VenueRepository;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,9 +18,9 @@ public class VenueServiceImpl implements VenueService {
 
 
     @Autowired
-    public VenueServiceImpl(VenueRepository venueRepository) {
+    public VenueServiceImpl(VenueRepository venueRepository, ModelMapper modelMapper) {
         this.venueRepository = venueRepository;
-        this.modelMapper = modelMapper;
+        this.modelMapper = this.modelMapper;
     }
 
     @Override
@@ -44,13 +41,13 @@ public class VenueServiceImpl implements VenueService {
                 .collect(Collectors.toList());
     }
 
-//
-//    @Override
-//    public VenueDTO getVenueById(Long id) {
-//        Venue venue = venueRepository.findById(id)
-//                .orElseThrow(() -> new RuntimeException("Venue not found for id: " + id));
-//        return modelMapper.map(venue, VenueDTO.class);
-//    }
+
+    @Override
+    public VenueDTO getVenueById(Long id) {
+        Venue venue = venueRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Venue not found for id: " + id));
+        return modelMapper.map(venue, VenueDTO.class);
+    }
 
 
 }

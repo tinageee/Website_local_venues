@@ -16,6 +16,6 @@ public interface VenueService {
     List<Venue> getAllVenues();
 
     List<VenueDTO> getbyZipcode(int zipCode);
-//
-//    VenueDTO getVenueById(Long id);
+
+    VenueDTO getVenueById(Long id);
 }

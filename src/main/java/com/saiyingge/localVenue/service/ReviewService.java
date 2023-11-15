@@ -11,7 +11,9 @@ public interface ReviewService {
 
     List<Review> getReviewByUserId(int userId);
 
-    List<ReviewDTO>  getReviewByVenueID(int id);
+    List<Review> getReviewByVenueID(int id);
+
+    List<Review> getReviewByVendorId(int vendorId);
 
 
 

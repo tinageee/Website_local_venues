@@ -2,7 +2,6 @@ package com.saiyingge.localVenue.service;
 
 import com.saiyingge.localVenue.dto.ReviewDTO;
 import com.saiyingge.localVenue.entity.Review;
-import com.saiyingge.localVenue.entity.Venue;
 import com.saiyingge.localVenue.repository.ReviewRepository;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
@@ -51,11 +49,12 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<ReviewDTO> getReviewByVenueID(int venueId) {
-        List<Venue> review = reviewRepository.findByVenueId(venueId);
-        return review.stream()
-                .map(venue -> modelMapper.map(review, ReviewDTO.class))
-                .collect(Collectors.toList());
+    public List<Review> getReviewByVenueID(int venueId) {
+        return reviewRepository.findByVenueId(venueId);
+    }
+    @Override
+    public List<Review> getReviewByVendorId(int vendorId) {
+        return reviewRepository.findByVendorId(vendorId);
     }
 
     //    @Override
