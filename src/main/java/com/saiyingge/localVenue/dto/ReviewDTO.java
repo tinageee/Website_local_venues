@@ -13,14 +13,23 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-public class ReviewDTO extends Review {
+public class ReviewDTO {
     private long id;
     private String content;
     private Integer rating;
 
-    private int userId;
-    private int venueId;
-    private int vendorId;
-    private String date;
+    private long userId;
+    private long venueId;
+    private long vendorId;
+    private String Date;
 
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+    public void setVenueId(long venueId) {
+        this.venueId = venueId;
+    }
+    public void setVendorId(long vendorId) {
+        this.vendorId = vendorId;
+    }
 }

@@ -35,19 +35,19 @@ public class ReviewServiceWithDBTest {
     @BeforeEach
     public void init() {
 
-        UserDTO user = new UserDTO();
-        user.setId(1L);
+//        UserDTO user = new UserDTO();
+//        user.setId(1L);
 
         ReviewDTO review1 = new ReviewDTO();
-        review1.setUser(user);
+        review1.setUserId(1L);
         review1.setContent("Review 1 Content");
 
         ReviewDTO review2 = new ReviewDTO();
-        review2.setUser(user);
+        review1.setUserId(1L);
         review2.setContent("Review 2 Content");
 
 
-        userService.saveUser(user);
+//        userService.saveUser(user);
         reviewService.saveReview(review1);
         reviewService.saveReview(review2);
 

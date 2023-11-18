@@ -25,6 +25,7 @@ public class VenueDTO {
     private int zipCode;
     private String contactInformation;
     private String website;
+    private String imageUrl;
 
     private List<VendorDTO> VendorDTOList;
 

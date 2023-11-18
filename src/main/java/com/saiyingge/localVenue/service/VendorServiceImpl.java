@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class VendorServicelmpl implements VendorService {
+public class VendorServiceImpl implements VendorService {
 
     private final VendorRepository vendorRepository;
     private ModelMapper modelMapper;
 
     @Autowired
-    public VendorServicelmpl(VendorRepository vendorRepository, ModelMapper modelMapper) {
+    public VendorServiceImpl(VendorRepository vendorRepository, ModelMapper modelMapper) {
         this.vendorRepository = vendorRepository;
         this.modelMapper = modelMapper;
     }

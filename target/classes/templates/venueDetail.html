@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${venue.name}">Venue Detail</title>
+</head>
+<body>
+<h1 th:text="${venue.name}">Venue Name</h1>
+<p><strong>Location:</strong> <span th:text="${venue.location}"></span></p>
+<p><strong>Description:</strong> <span th:text="${venue.description}"></span></p>
+<p><strong>Facility Details:</strong> <span th:text="${venue.facilityDetails}"></span></p>
+<p><strong>Opening Hours:</strong> <span th:text="${venue.openingHours}"></span></p>
+<p><strong>Type:</strong> <span th:text="${venue.type}"></span></p>
+<p><strong>Fee:</strong> <span th:text="${venue.fee}"></span></p>
+<p><strong>Zip Code:</strong> <span th:text="${venue.zipCode}"></span></p>
+<p><strong>Contact Information:</strong> <span th:text="${venue.contactInformation}"></span></p>
+<p><strong>Website:</strong> <a th:href="${venue.website}" th:text="${venue.website}"></a></p>
+<p><strong>Image:</strong> <img th:src="${venue.imageUrl}" alt="Venue Image" /></p>
+
+<h2>Reviews</h2>
+<div th:if="${reviews.empty}">
+    <p>No reviews yet.</p>
+</div>
+<div th:unless="${reviews.empty}">
+    <ul>
+        <li th:each="review : ${reviews}">
+            <p><strong> Comment:</strong> <span th:text="${review.content}"></span></p>
+            <p><strong>Rating:</strong> <span th:text="${review.rating}"></span></p>
+            <p><strong>Date:</strong> <span th:text="${review.Date}"></span></p>
+            <p><strong>Reviewer:</strong> <span th:text="${review.user.username}"></span></p>
+        </li>
+    </ul>
+</div>
+
+<div th:if="${isLoggedIn}">
+    <h3>Submit a Review</h3>
+    <form th:action="@{/submitReview}" method="post">
+        <input type="hidden" name="venueId" th:value="${venue.id}" />
+        <textarea name="content" placeholder="Enter your review here"></textarea>
+        <input type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" />
+        <button type="submit">Submit Review</button>
+    </form>
+</div>
+
+
+<a href="/venuesPage">Back to Venue List</a>
+</body>
+</html>

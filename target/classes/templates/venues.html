@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Venues</title>
+    <style>
+        .venue-listing {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .venue-listing:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+<h1>Venues</h1>
+<div th:if="${#lists.isEmpty(venues)}">
+    <p>There is no venue in the database.</p>
+</div>
+<div>
+    <ul>
+        <li th:each="venue : ${venues}" class="venue-listing" th:onclick="'window.location.href=\'/venues/' + ${venue.id} + '\''">
+            <h3 th:text="${venue.name}">Venue Name</h3>
+            <p th:text="${venue.description}">Venue Description</p>
+            <img th:src="${venue.imageUrl}" alt="Venue Image" />
+            <!-- Add other details you want to show in the summary -->
+        </li>
+    </ul>
+</div>
+
+<!-- Include additional JavaScript or other resources if needed -->
+</body>
+</html>

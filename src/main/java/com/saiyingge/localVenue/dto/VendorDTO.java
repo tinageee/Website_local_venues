@@ -19,5 +19,7 @@ public class VendorDTO {
     private String contactInformation;
     private String website;
     private List<VenueDTO> VenueDTOList;
+    private String imageUrl;
+
 
 }

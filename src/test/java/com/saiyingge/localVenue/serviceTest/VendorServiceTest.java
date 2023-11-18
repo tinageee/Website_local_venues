@@ -2,10 +2,8 @@ package com.saiyingge.localVenue.serviceTest;
 
 
 import com.saiyingge.localVenue.dto.VendorDTO;
-import com.saiyingge.localVenue.dto.VenueDTO;
-import com.saiyingge.localVenue.entity.Venue;
 import com.saiyingge.localVenue.repository.VendorRepository;
-import com.saiyingge.localVenue.service.VendorServicelmpl;
+import com.saiyingge.localVenue.service.VendorServiceImpl;
 import com.saiyingge.localVenue.entity.Vendor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,12 +21,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
-import static org.mockito.ArgumentMatchers.anyLong; // Import necessary Mockito classes
-
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class VendorServiceTest {
 
-    private VendorServicelmpl vendorService;
+    private VendorServiceImpl vendorService;
 
     @Mock
     private VendorRepository vendorRepository;
@@ -38,14 +34,14 @@ public class VendorServiceTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        vendorService = new VendorServicelmpl(vendorRepository,modelMapper);
+        vendorService = new VendorServiceImpl(vendorRepository,modelMapper);
     }
 
 
     @Test
     public void testConstructorInjection() throws Exception {
         // Use reflection to access the private vendorRepository field
-        Field vendorRepositoryField = VendorServicelmpl.class.getDeclaredField("vendorRepository");
+        Field vendorRepositoryField = VendorServiceImpl.class.getDeclaredField("vendorRepository");
         ((Field) vendorRepositoryField).setAccessible(true);
         VendorRepository vendorRepository = (VendorRepository) vendorRepositoryField.get(vendorService);
 
@@ -86,7 +82,7 @@ public class VendorServiceTest {
     @Test
     public void testGetVendorById() {
         Vendor vendor = new Vendor();
-        vendor.setId(10); // Set any necessary fields for the vendor
+        vendor.setId(10L); // Set any necessary fields for the vendor
         vendor.setDescription("test description");
 
         // Mock the behavior of the repository

@@ -37,6 +37,8 @@ public class Venue {
     private int zipCode;
     private String contactInformation;
     private String website;
+    @Column(name = "image_url", length = 1000)
+    private String imageUrl;
 
     @OneToMany(mappedBy = "venue")
     private List<Review> reviews;
@@ -48,4 +50,13 @@ public class Venue {
             inverseJoinColumns = @JoinColumn(name = "vendor_id")
     )
     private List<Vendor> vendorsList;
+
+    @Override
+    public String toString() {
+        return "Venue{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+
+                '}';
+    }
 }

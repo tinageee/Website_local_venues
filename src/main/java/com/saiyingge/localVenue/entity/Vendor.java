@@ -30,6 +30,9 @@ public class Vendor {
     private String description;
     private String contactInformation;
     private String website;
+    @Column(name = "image_url", length = 1000)
+    private String imageUrl;
+
 
 
     @ManyToMany(mappedBy = "vendorsList")

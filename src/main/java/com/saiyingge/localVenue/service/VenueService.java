@@ -9,13 +9,11 @@ import java.util.List;
 
 public interface VenueService {
 
-
-
     void saveVenue(Venue venue);
 
     List<Venue> getAllVenues();
 
-    List<VenueDTO> getbyZipcode(int zipCode);
+//    List<VenueDTO> getbyZipcode(int zipCode);
 
     VenueDTO getVenueById(long id);
 }

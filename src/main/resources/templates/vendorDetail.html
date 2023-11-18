@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${vendor.name}">Venue Detail</title>
+</head>
+<body>
+<h1 th:text="${vendor.name}">Venue Name</h1>
+<p><strong>Description:</strong> <span th:text="${vendor.description}"></span></p>
+<p><strong>Contact Information:</strong> <span th:text="${vendor.contactInformation}"></span></p>
+<p><strong>Website:</strong> <a th:href="${vendor.website}" th:text="${vendor.website}"></a></p>
+<p><strong>Image:</strong> <img th:src="${vendor.imageUrl}" alt="Venue Image" /></p>
+
+<h2>Reviews</h2>
+<div th:if="${reviews.empty}">
+  <p>No reviews yet.</p>
+</div>
+<div th:unless="${reviews.empty}">
+  <ul>
+    <li th:each="review : ${reviews}">
+      <p><strong> Comment:</strong> <span th:text="${review.content}"></span></p>
+      <p><strong>Rating:</strong> <span th:text="${review.rating}"></span></p>
+      <p><strong>Date:</strong> <span th:text="${review.Date}"></span></p>
+      <p><strong>Reviewer:</strong> <span th:text="${review.user.username}"></span></p>
+    </li>
+  </ul>
+</div>
+
+<!--<div th:if="${isLoggedIn}">-->
+<!--  <h3>Submit a Review</h3>-->
+<!--  <form th:action="@{/submitReview}" method="post">-->
+<!--    <input type="hidden" name="vendorId" th:value="${vendor.id}" />-->
+<!--    <textarea name="content" placeholder="Enter your review here"></textarea>-->
+<!--    <input type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" />-->
+<!--    <button type="submit">Submit Review</button>-->
+<!--  </form>-->
+<!--</div>-->
+
+
+<a href="/vendorsPage">Back to Vendor List</a>
+</body>
+</html>

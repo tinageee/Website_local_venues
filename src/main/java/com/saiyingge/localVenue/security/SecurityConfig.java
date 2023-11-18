@@ -39,10 +39,14 @@ public class SecurityConfig {
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(
-                        auth -> auth.requestMatchers("/",
+                        auth -> auth.requestMatchers(
+                                        "/",
                                         "/css/*", "/js/*","/img/*",
                                         "/form", "/sign-up-process", "/confirmation-page",
-                                        "/login").permitAll()
+                                        "/login",
+                                        "/venuesPage","/venues/**","/submitReview/**",
+                                        "/vendorsPage","/vendors/**"
+                                ).permitAll()
                                 .requestMatchers("/account")
 //                                remove the constraint of role
                                 .hasAnyRole("USER")
@@ -62,12 +66,5 @@ public class SecurityConfig {
 
     }
 
-    //        add due to eroor code:Action:
-//
-//Consider defining a bean of type 'org.modelmapper.ModelMapper' in your configuration.
-    @Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
-    }
 
 }

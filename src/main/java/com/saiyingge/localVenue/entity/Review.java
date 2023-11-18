@@ -39,7 +39,16 @@ public class Review {
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
 
-    private String date;
+    private String Date;
 
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                // other fields
+                // Include only the Venue's ID, not the whole object
+                ", venueId=" + (venue != null ? venue.getId() : null) +
+                '}';
+    }
 
 }

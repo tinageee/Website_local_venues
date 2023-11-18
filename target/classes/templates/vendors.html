@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vendors</title>
+    <style>
+        .vendor-listing {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .vendor-listing:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+<h1>Vendors</h1>
+<div th:if="${#lists.isEmpty(vendors)}">
+    <p>There is no vendor in the database.</p>
+</div>
+<div>
+    <ul>
+        <li th:each="vendor : ${vendors}" class="vendor-listing" th:onclick="'window.location.href=\'/vendors/' + ${vendor.id} + '\''">
+            <h3 th:text="${vendor.name}">Vendor Name</h3>
+            <p th:text="${vendor.description}">Vendor Description</p>
+            <img th:src="${vendor.imageUrl}" alt="Vendor Image" />
+            <!-- Add other details you want to show in the summary -->
+        </li>
+    </ul>
+</div>
+
+
+</body>
+</html>
