@@ -11,6 +11,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+/**
+ *  defines security rules and authentication settings for a web application.
+ *
+ * @author S.G
+ */
 
 @Configuration
 @EnableWebSecurity
@@ -52,10 +57,7 @@ public class SecurityConfig {
                                 .requestMatchers("/account")
                                 .hasAnyRole("USER")
                                 .anyRequest().authenticated())
-//                .formLogin(form -> form.loginPage("/login")
-//                        .loginProcessingUrl("/login")
-//                        .successForwardUrl("/home")
-//                        .permitAll())
+
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")

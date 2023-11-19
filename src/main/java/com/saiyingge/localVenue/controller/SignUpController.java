@@ -13,7 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+/**
+ * handling user sign-up related functionality.
+ * It provides endpoints for displaying a sign-up form ("/form"), processing user sign-up ("/sign-up-process"),
+ * and displaying a confirmation page ("/confirmation-page")
+ *
+ * @author S.G
+ */
 @Controller
 public class SignUpController {
 
@@ -25,7 +31,7 @@ public class SignUpController {
     }
 
     @GetMapping("/form")
-    public String signUpForm(Model model){
+    public String signUpForm(Model model) {
 
         model.addAttribute("userDto", new UserDTO());
 
@@ -34,10 +40,8 @@ public class SignUpController {
 
 
     @PostMapping("/sign-up-process")
-    public String signUpProcess(@Valid @ModelAttribute("userDto") UserDTO userDTO, BindingResult bindingResult)
-    {
-        if(bindingResult.hasErrors())
-        {
+    public String signUpProcess(@Valid @ModelAttribute("userDto") UserDTO userDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "sign-up";
         }
 
@@ -48,8 +52,7 @@ public class SignUpController {
 
 
     @GetMapping("/confirmation-page")
-    public String confirmationPage()
-    {
+    public String confirmationPage() {
         return "confirmation";
     }
 

@@ -20,6 +20,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.security.Principal;
 import java.util.List;
 
+/**
+ * provides endpoints for listing vendors ("/vendorList"), displaying vendor details ("/vendors/{id}"),
+ * and submitting vendor reviews ("/submitVendorReview").
+ *
+ * @author S.G
+ */
 
 @Controller
 public class VendorController {
@@ -68,7 +74,7 @@ public class VendorController {
 
             // Implement logic to save the review
             String email = principal.getName();
-            User user= userService.findUserByEmailForSecurity(email);
+            User user = userService.findUserByEmailForSecurity(email);
 
             ReviewDTO reviewDTO = new ReviewDTO();
             reviewDTO.setVendorId(vendorId);

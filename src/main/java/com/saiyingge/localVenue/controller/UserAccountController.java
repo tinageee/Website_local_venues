@@ -17,6 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Spring MVC controller responsible for managing user accounts and reviews.
+ * It provides endpoints for displaying user account information ("/account/{id}")
+ * and deleting reviews ("/deleteReview/{reviewId}").
+ *
+ * @author S.G
+ */
 
 @Controller
 public class UserAccountController {
@@ -28,10 +35,8 @@ public class UserAccountController {
     private ReviewServiceImpl reviewService;
 
 
-
     @GetMapping("/account/{id}")
-    public String showUserReviews(@PathVariable("id") Long id, Model model)
-    {
+    public String showUserReviews(@PathVariable("id") Long id, Model model) {
         Optional<User> userInfoOptional = userService.findById(id);
         User userInfo = userInfoOptional.orElse(null);
         model.addAttribute("userInfo", userInfo);
