@@ -6,7 +6,6 @@ import com.saiyingge.localVenue.dto.UserDTO;
 import com.saiyingge.localVenue.entity.Role;
 import com.saiyingge.localVenue.entity.User;
 import com.saiyingge.localVenue.repository.UserRepository;
-import com.saiyingge.localVenue.service.RoleService;
 
 
 import jakarta.transaction.Transactional;
@@ -25,7 +24,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * adopted from examples from spring bot basic 2
@@ -112,5 +110,8 @@ public class UserServiceImpl implements UserService{
         else
             throw new RuntimeException("User does not exist");
 
+    }
+    public Optional<User> findById(long id) {
+        return userRepository.findById(id);
     }
 }

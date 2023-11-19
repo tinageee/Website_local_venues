@@ -2,6 +2,7 @@ package com.saiyingge.localVenue.security;
 
 import com.saiyingge.localVenue.service.UserService;
 import org.modelmapper.ModelMapper;
+import com.saiyingge.localVenue.security.CustomLoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +35,10 @@ public class SecurityConfig {
     {
         return new BCryptPasswordEncoder(12);
     }
-
+    @Bean
+    public CustomLoginSuccessHandler customLoginSuccessHandler() {
+        return new CustomLoginSuccessHandler();
+    }
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -43,18 +47,21 @@ public class SecurityConfig {
                                         "/",
                                         "/css/*", "/js/*","/img/*",
                                         "/form", "/sign-up-process", "/confirmation-page",
-                                        "/login",
-                                        "/venuesPage","/venues/**","/submitReview/**",
-                                        "/vendorsPage","/vendors/**"
+                                        "/login","/home",
+                                        "/venueList","/venues/**",
+                                        "/vendorList","/vendors/**"
                                 ).permitAll()
                                 .requestMatchers("/account")
-//                                remove the constraint of role
                                 .hasAnyRole("USER")
-//                                .authenticated()
                                 .anyRequest().authenticated())
-                .formLogin(form -> form.loginPage("/login")
+//                .formLogin(form -> form.loginPage("/login")
+//                        .loginProcessingUrl("/login")
+//                        .successForwardUrl("/home")
+//                        .permitAll())
+                .formLogin(form -> form
+                        .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .successForwardUrl("/home")
+                        .successHandler(customLoginSuccessHandler()) // Use custom success handler
                         .permitAll())
                 .logout(logout -> logout
                         .invalidateHttpSession(true)

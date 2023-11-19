@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import jakarta.persistence.*;
-
+import java.time.LocalDateTime;
 /**
  * Entity class representing a User in the application.
  * Each user has a unique identifier, a username, a password, a first name, a last name,
@@ -39,8 +39,21 @@ public class Review {
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
 
-    private String Date;
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
 
+    @Column(name = "last_edit_date")
+    private LocalDateTime lastEditDate;
+    @PrePersist
+    protected void onCreate() {
+        createdDate = LocalDateTime.now();
+        lastEditDate = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        lastEditDate = LocalDateTime.now();
+    }
     @Override
     public String toString() {
         return "Review{" +

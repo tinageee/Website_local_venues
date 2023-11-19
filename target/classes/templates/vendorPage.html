@@ -19,23 +19,33 @@
     <li th:each="review : ${reviews}">
       <p><strong> Comment:</strong> <span th:text="${review.content}"></span></p>
       <p><strong>Rating:</strong> <span th:text="${review.rating}"></span></p>
-      <p><strong>Date:</strong> <span th:text="${review.Date}"></span></p>
       <p><strong>Reviewer:</strong> <span th:text="${review.user.username}"></span></p>
+      <p><strong>Last Edit Date:</strong>
+        <!--                only show the date-->
+        <span th:text="${#temporals.format(review.lastEditDate, 'yyyy-MM-dd')}"></span>
+      </p>
+
     </li>
   </ul>
 </div>
 
-<!--<div th:if="${isLoggedIn}">-->
-<!--  <h3>Submit a Review</h3>-->
-<!--  <form th:action="@{/submitReview}" method="post">-->
-<!--    <input type="hidden" name="vendorId" th:value="${vendor.id}" />-->
-<!--    <textarea name="content" placeholder="Enter your review here"></textarea>-->
-<!--    <input type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" />-->
-<!--    <button type="submit">Submit Review</button>-->
-<!--  </form>-->
-<!--</div>-->
+<div th:if="${isLoggedIn}">
+  <h3>Submit a Review</h3>
+  <form th:action="@{/submitVendorReview}" method="post">
+    <input type="hidden" name="vendorId" th:value="${vendor.id}" />
+    <textarea name="content" placeholder="Enter your review here" required></textarea>
 
+    <input type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" required />
 
-<a href="/vendorsPage">Back to Vendor List</a>
+    <button type="submit">Submit Review</button>
+  </form>
+</div>
+
+<div th:unless="${isLoggedIn}">
+  <!-- Message and login button for users who are not logged in -->
+  <p>To leave a review, please <a href="/login">log in</a>.</p>
+</div>
+
+<a href="/vendorList">Back to Vendor List</a>
 </body>
 </html>

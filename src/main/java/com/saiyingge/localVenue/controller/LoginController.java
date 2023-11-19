@@ -20,9 +20,9 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping("/home")
-    public String redirectToAccount()
-    {
-        return "redirect:/account";
-    }
+//    @RequestMapping("/home")
+//    public String redirectToAccount()
+//    {
+//        return "redirect:/account";
+//    }
 }

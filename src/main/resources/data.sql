@@ -1,5 +1,4 @@
-USE
-local_venues;
+USE local_venues;
 
 -- Insert sample data for venues
 INSERT INTO Venue (ID, Name, Location, Description, Facility_Details, Opening_Hours, Type, Fee, Zip_code,
@@ -53,13 +52,41 @@ VALUES (1, 'test@test.com', 'testFN', 'testLN', '$2a$12$cEaT3LNdOz9M27hW/LeUVewo
 
 
 -- Insert sample data for reviews
-INSERT INTO Review (ID, Content, Rating, Date, User_ID, Venue_ID, Vendor_ID)
-VALUES (1, 'Great experience at Market Square!', 5, '2023-01-01', 1, 1, NULL),
-       (2, 'Loved the ambiance of Event Horizon.', 4, '2023-01-02', 2, Null, 2),
-       (3, 'Green Yard was perfect for our family day.', 5, '2023-01-03', 3, 3, NULL),
-       (4, 'Urban Gallery had an amazing exhibition.', 4, '2023-01-04', 4, NULL, 4),
-       (5, 'Beachside Boardwalk was a bit crowded but fun.', 3, '2023-01-05', 5, 5, 5),
-       (6, 'test!', 1, '2023-01-01', 1, 1, NULL);
+INSERT INTO Review (ID, Content, Rating, created_date, last_edit_date, User_ID, Venue_ID, Vendor_ID)
+VALUES (1, 'Had an unpleasant experience with a vendor at Market Square.', 3, '2023-11-11 22:15:50',
+        '2023-11-10 22:15:50', 4, 2, NULL),
+       (2, 'Event Horizon hosted our corporate event, and it was flawless.', 4, '2023-11-06 22:15:50',
+        '2023-11-18 22:15:50', 2, NULL, 1),
+       (3, 'Exceptional experience at Market Square! Fresh products and friendly vendors.', 3, '2023-10-29 22:15:50',
+        '2023-10-25 22:15:50', 5, NULL, 5),
+       (4, 'Green Yard is perfect for family outings. The kids loved the playground.', 2, '2023-11-10 22:15:50',
+        '2023-11-03 22:15:50', 1, 2, NULL),
+       (5, 'Event Horizon hosted our corporate event, and it was flawless.', 5, '2023-10-23 22:15:50',
+        '2023-11-08 22:15:50', 5, 3, NULL),
+       (6, 'Market Square has a decent selection, but some vendors are overpriced.', 1, '2023-11-17 22:15:50',
+        '2023-11-10 22:15:50', 5, 5, NULL),
+       (7, 'Green Yard could be a great spot, but it is poorly maintained.', 3, '2023-11-05 22:15:50',
+        '2023-11-13 22:15:50', 2, NULL, 4),
+       (8, 'Had an unpleasant experience with a vendor at Market Square.', 3, '2023-10-26 22:15:50',
+        '2023-10-21 22:15:50', 5, 4, NULL),
+       (9, 'Event Horizon is a nice venue, but the parking can be a nightmare.', 5, '2023-10-21 22:15:50',
+        '2023-10-31 22:15:50', 4, 1, NULL),
+       (10, 'Urban Gallery''s art collection is breathtaking. A must-visit for art enthusiasts.', 3,
+        '2023-10-19 22:15:50', '2023-10-31 22:15:50', 3, 2, NULL),
+       (11, 'Visited Urban Gallery and was underwhelmed. The collection is small and not well-curated.', 2,
+        '2023-11-09 22:15:50', '2023-11-13 22:15:50', 2, 1, NULL),
+       (12, 'Urban Gallery''s art collection is breathtaking. A must-visit for art enthusiasts.', 4,
+        '2023-10-27 22:15:50', '2023-10-31 22:15:50', 1, NULL, 2),
+       (13, 'Green Yard could be a great spot, but it''s poorly maintained.', 1, '2023-10-20 22:15:50',
+        '2023-10-29 22:15:50', 4, 3, NULL),
+       (14, 'A hidden gem in the heart of the city! The atmosphere was inviting, and the staff went above and beyond.',
+        1, '2023-10-29 22:15:50', '2023-11-16 22:15:50', 5, NULL, 4),
+       (15, 'Urban Gallery''s art collection is breathtaking. A must-visit for art enthusiasts.', 1,
+        '2023-11-15 22:15:50', '2023-11-14 22:15:50', 3, 1, NULL),
+       (16, 'Visited Urban Gallery and was underwhelmed. The collection is small and not well-curated.', 5,
+        '2023-10-21 22:15:50', '2023-11-08 22:15:50', 3, 2, NULL),
+       (17, 'Event Horizon is a nice venue, but the parking can be a nightmare.', 5, '2023-11-04 22:15:50',
+        '2023-11-08 22:15:50', 3, NULL, 2);
 
 -- Insert sample data for roles
 INSERT INTO Role (ID, name)

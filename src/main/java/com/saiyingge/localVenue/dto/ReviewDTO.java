@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -22,6 +24,8 @@ public class ReviewDTO {
     private long venueId;
     private long vendorId;
     private String Date;
+    private LocalDateTime createdDate;
+    private LocalDateTime lastEditDate;
 
     public void setUserId(long userId) {
         this.userId = userId;
@@ -31,5 +35,19 @@ public class ReviewDTO {
     }
     public void setVendorId(long vendorId) {
         this.vendorId = vendorId;
+    }
+
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+
+    public void setLastEditDate() {
+        LocalDateTime lastEditDate = LocalDateTime.now();
+        this.lastEditDate = lastEditDate;
     }
 }

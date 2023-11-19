@@ -2,10 +2,15 @@ package com.saiyingge.localVenue.service;
 
 import com.saiyingge.localVenue.dto.ReviewDTO;
 import com.saiyingge.localVenue.entity.Review;
+import com.saiyingge.localVenue.entity.User;
+import com.saiyingge.localVenue.entity.Vendor;
+import com.saiyingge.localVenue.entity.Venue;
 import com.saiyingge.localVenue.repository.ReviewRepository;
+import com.saiyingge.localVenue.repository.UserRepository;
+import com.saiyingge.localVenue.repository.VendorRepository;
+import com.saiyingge.localVenue.repository.VenueRepository;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +20,40 @@ import java.util.List;
 public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository reviewRepository;
-    private ModelMapper modelMapper;
+    private final UserRepository userRepository;
+    private final VenueRepository venueRepository;
+    private final VendorRepository vendorRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public ReviewServiceImpl(ReviewRepository reviewRepository) {
+    public ReviewServiceImpl(ReviewRepository reviewRepository,
+                             UserRepository userRepository,
+                             VenueRepository venueRepository,
+                             VendorRepository vendorRepository,
+                             ModelMapper modelMapper) {
         this.reviewRepository = reviewRepository;
+        this.userRepository = userRepository;
+        this.venueRepository = venueRepository;
+        this.vendorRepository = vendorRepository;
         this.modelMapper = modelMapper;
     }
 
     @Override
-
+    @Transactional
     public void saveReview(ReviewDTO reviewDTO) {
+        Review review = new Review();
+        review.setContent(reviewDTO.getContent());
+        review.setRating(reviewDTO.getRating());
 
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        Review review  = modelMapper.map(reviewDTO, Review.class);
+        // Fetch and set User, Venue, and Vendor entities
+
+        User user = userRepository.findById(reviewDTO.getUserId()).orElse(null);
+        Venue venue = venueRepository.findById(reviewDTO.getVenueId()).orElse(null);
+        Vendor vendor = vendorRepository.findById(reviewDTO.getVendorId()).orElse(null);
+
+        review.setUser(user);
+        review.setVenue(venue);
+        review.setVendor(vendor);
 
         reviewRepository.save(review);
     }
@@ -57,32 +81,5 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewRepository.findByVendorId(vendorId);
     }
 
-    //    @Override
-//    public ReviewDTO updateReview(ReviewDTO reviewDTO, Long id) {
-//        Review existingReview = reviewRepository.findById(id)
-//                .orElseThrow(() -> new RuntimeException("Review not found for id: " + id));
-//
-//        // Update properties of existingReview with those from reviewDTO
-//        // For example:
-//        // existingReview.setContent(reviewDTO.getContent());
-//        // Add other properties as needed
-//
-//        existingReview = reviewRepository.save(existingReview);
-//        return convertToDto(existingReview);
-//    }
-
-//    @Override
-//    public void deleteReview(Long id) {
-//        reviewRepository.deleteById(id);
-//    }
-
-    // Helper method to convert Review entity to ReviewDTO
-//    private ReviewDTO convertToDto(Review review) {
-//        ReviewDTO reviewDTO = new ReviewDTO();
-//        // Map fields from Review to ReviewDTO
-//         reviewDTO.setId(review.getId());
-//
-//        return reviewDTO;
-//    }
 
 }
