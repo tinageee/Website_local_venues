@@ -28,7 +28,10 @@ public class UserDTO {
     @Size(max = 100)
     private String lastName;
 
+    @NotEmpty(message = "Can't be empty string")
+    @Size(max = 100)
     private String username;
+
     @Email(message = "Provide correct email")
     private String email;
 
@@ -47,7 +50,5 @@ public class UserDTO {
     private List<ReviewDTO> ReviewDTOList;
 
 
-    public void setId(long id) {
-        this.id = id;
-    }
+
 }

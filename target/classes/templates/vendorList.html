@@ -2,35 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Vendors</title>
-    <style>
-        .vendor-listing {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-
-        .vendor-listing:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/popWindow.js"></script>
 </head>
 <body>
+<div th:replace="index :: navbar"></div>
 <h1>Vendors</h1>
+
+
 <div th:if="${#lists.isEmpty(vendors)}">
     <p>There is no vendor in the database.</p>
 </div>
-<div>
-    <ul>
-        <li th:each="vendor : ${vendors}" class="vendor-listing" th:onclick="'window.location.href=\'/vendors/' + ${vendor.id} + '\''">
-            <h3 th:text="${vendor.name}">Vendor Name</h3>
+<div class="list_container">
+
+        <div  th:each="vendor : ${vendors}" class="vendor-listing" th:onclick="'window.location.href=\'/vendors/' + ${vendor.id} + '\''",>
+            <div class="vendor-info">
+            <p th:text="${vendor.name}" class="vendor-title">Vendor Name</p>
             <p th:text="${vendor.description}">Vendor Description</p>
-            <img th:src="${vendor.imageUrl}" alt="Vendor Image" />
-            <!-- Add other details you want to show in the summary -->
-        </li>
-    </ul>
+                <p th:text="${vendor.website}" class="website" >Vendor Website</p>
+            </div >
+            <img th:src="${vendor.imageUrl}" alt="Vendor Image" class="vendor-image" />
+
+        </div >
+
 </div>
 
+<div id="contactModal" style="display:none;">
+    <div style="background-color: white; padding: 20px; border-radius: 5px; text-align: center;">
+        <h2>Interested in Listing Your Business?</h2>
+        <p>Contact us now to get more information!</p>
+        <button id="contactButton" style="padding: 10px 20px; background-color: #5c3c1f; color: white; border: none; border-radius: 5px;">Contact Us</button>
+        <button id="closeButton" style="padding: 10px 20px; background-color: #e7b789; color: white; border: none; border-radius: 5px;">Later</button>
+    </div>
+</div>
 
 </body>
 </html>

@@ -74,11 +74,14 @@ public class UserServiceImpl implements UserService{
     @Transactional
     public void saveUser(UserDTO userDTO) {
 
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-
-        User user = modelMapper.map(userDTO, User.class);
-        user.setRoles(Arrays.asList(roleService.findRoleByName("ROLE_EMPLOYEE")));
+        User user = new User();
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
+        user.setUsername(userDTO.getUsername());
+        user.setEmail(userDTO.getEmail()); // Assuming you have an email field in User entity
+        user.setPassword(userDTO.getPassword()); // Assuming you have a password field in User entity
+        user.setPhoneNumber(userDTO.getPhoneNumber());
+//        user.setRoles(Arrays.asList(roleService.findRoleByName("ROLE_EMPLOYEE")));
         user.setPassword(encoder.encode(userDTO.getPassword()));
 
         userRepository.save(user);

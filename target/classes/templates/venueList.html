@@ -2,35 +2,63 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Venues</title>
-    <style>
-        .venue-listing {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
+<!--    <style>-->
+<!--        .venue-listing {-->
+<!--            border: 1px solid #ddd;-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 10px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
 
-        .venue-listing:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
+<!--        .venue-listing:hover {-->
+<!--            background-color: #f0f0f0;-->
+<!--        }-->
+<!--    </style>-->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/popWindow.js"></script>
 </head>
 <body>
+<div th:replace="~{index :: navbar}"></div>
 <h1>Venues</h1>
 <div th:if="${#lists.isEmpty(venues)}">
     <p>There is no venue in the database.</p>
 </div>
-<div>
-    <ul>
-        <li th:each="venue : ${venues}" class="venue-listing" th:onclick="'window.location.href=\'/venues/' + ${venue.id} + '\''">
-            <h3 th:text="${venue.name}">Venue Name</h3>
+
+
+<div th:if="${#lists.isEmpty(venues)}">
+    <p>There are no venues in the database.</p>
+</div>
+<div class="list_container">
+    <div th:each="venue : ${venues}" class="venue-listing"
+         th:onclick="'window.location.href=\'/venues/' + ${venue.id} + '\''">
+        <div class="venue-info">
+            <p th:text="${venue.name}" class="venue-title">Venue Name</p>
             <p th:text="${venue.description}">Venue Description</p>
-            <img th:src="${venue.imageUrl}" alt="Venue Image" />
-            <!-- Add other details you want to show in the summary -->
-        </li>
-    </ul>
+            <p th:text="${venue.website}" class="website">Venue Website</p>
+        </div>
+        <img th:src="${venue.imageUrl}" alt="Venue Image" class="venue-image"/>
+    </div>
 </div>
 
-<!-- Include additional JavaScript or other resources if needed -->
+<!--<div>-->
+<!--    <ul>-->
+<!--        <li th:each="venue : ${venues}" class="venue-listing"-->
+<!--            th:onclick="'window.location.href=\'/venues/' + ${venue.id} + '\''">-->
+<!--            <h3 th:text="${venue.name}">Venue Name</h3>-->
+<!--            <p th:text="${venue.description}">Venue Description</p>-->
+<!--            <img th:src="${venue.imageUrl}" alt="Venue Image"/>-->
+
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<div id="contactModal" style="display:none;">
+    <div style="background-color: white; padding: 20px; border-radius: 5px; text-align: center;">
+        <h2>Interested in Listing Your Business?</h2>
+        <p>Contact us now to get more information!</p>
+        <button id="contactButton" style="padding: 10px 20px; background-color: #5c3c1f; color: white; border: none; border-radius: 5px;">Contact Us</button>
+        <button id="closeButton" style="padding: 10px 20px; background-color: #e7b789; color: white; border: none; border-radius: 5px;">Later</button>
+    </div>
+</div>
 </body>
 </html>

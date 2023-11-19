@@ -47,4 +47,8 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Review> reviewsList;
+
+    public Long getId() {
+        return id;
+    }
 }

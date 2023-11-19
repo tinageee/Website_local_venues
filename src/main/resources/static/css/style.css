@@ -1,0 +1,318 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff8f0; /* warm light background */
+    color: #333333; /* soft black for text */
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+#navbar {
+    background-color: #f4e1d2; /* warm beige for the navbar */
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#navbar ul li {
+    margin: 0 15px;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: #5c3c1f; /* dark brown for contrast */
+    font-weight: bold;
+}
+
+#navbar a:hover {
+    color: #8a5a33; /* lighter brown on hover */
+}
+
+h1 {
+    text-align: center;
+    color: #5c3c1f; /* dark brown for headings */
+}
+h2, h3{
+    text-align: center;
+    color: #333333;
+    align-items: center;
+}
+
+p {
+    text-align: center;
+}
+
+p a {
+    background-color: #e7b789; /* soft orange for buttons/links */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    background-color: #d9a067; /* slightly darker orange on hover */
+}
+
+
+/* Container for the Contact Us Content */
+.contact-container,.review-container,.list_container  {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background: #fff; /* White background for the content area */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333333; /* Soft black for text */
+}
+
+/* Styling for the Main Heading in Contact Us */
+.contact-container h1 {
+    font-size: 2.5em;
+    color: #5c3c1f; /* Dark brown for headings */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Paragraph Styling in Contact Us */
+.contact-container p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Unordered List Styling in Contact Us */
+.contact-container ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.contact-container ul li {
+    background: #f4e1d2; /* Warm beige for list items */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Testimonials Section in Contact Us */
+.testimonials {
+    background: #fff8f0; /* Warm light background */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.testimonials h2 {
+    color: #5c3c1f; /* Dark brown for sub-headings */
+}
+
+.testimonials p {
+    font-style: italic;
+    color: #666;
+}
+
+/* Mail Link Styling in Contact Us */
+.contact-container a {
+    color: #8a5a33; /* Lighter brown for links */
+    text-decoration: none;
+}
+
+.contact-container a:hover {
+    color: #5c3c1f; /* Dark brown on hover */
+}
+
+/* Responsive Design for Contact Us */
+@media (max-width: 768px) {
+    .contact-container {
+        width: 95%;
+        padding: 10px;
+    }
+}
+
+/*style for the pop-up window*/
+#contactModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other content */
+}
+.custom-signin-button,.delete-review,.back_button {
+    background-color: #5c3c1f; /* Customize the button background color */
+    color: white; /* Customize the button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: 'Arial', sans-serif; /* Customize the button font family */
+    font-weight: bold; /* Customize the button font weight */
+}
+
+.custom-signin-button:hover,.delete-review:hover,.back_button:hover {
+    background-color: #8a5a33; /* Customize the button background color on hover */
+}
+
+/* Add these CSS rules to your style.css file */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Center vertically on the viewport height */
+}
+
+/* You can adjust the container's width and padding as needed */
+.form-container form {
+    width: 100%; /* Adjust the width as needed */
+    max-width: 400px; /* Limit the maximum width of the form */
+    padding: 20px; /* Add some padding to the form */
+    background-color: #ffffff; /* Customize the background color of the form */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+}
+
+/* Center the form elements inside the container */
+.form-container form .form-group {
+    text-align: center;
+}
+
+/* Header section (venue/vendor name and rating) */
+.review-header, .review-dates,.review-info-inV{
+    display: flex;
+    justify-content: space-between;
+
+}
+/* Venue/Vendor Name */
+.review-title,.vendor-title,.venue-title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+
+.review-item {
+    margin-bottom: 20px;
+    border: 1px solid #5c3c1f;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+
+.review-content {
+    font-size: 20px;
+    color: #333;
+    font-style: italic;
+}
+
+.review-rating {
+    font-size: 18px;
+    color: #ff9800; /* Your desired rating color */
+}
+
+.vendor-listing,.venue-listing {
+    margin-bottom: 20px;
+    list-style-type: none;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.vendor-image,.venue-image {
+    width: 400px; /* Adjust the fixed width as needed */
+    height: 200px; /* Adjust the fixed height as needed */
+    object-fit: cover;
+}
+.vendor-info,.venue-info {
+    flex-grow: 1; /* Allow the vendor info to take up available space */
+    margin-right: 20px; /* Add margin between vendor info and image */
+}
+/* Adjust the width and other styles as needed */
+.v-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Vertically align content to the top */
+}
+
+.venue-info {
+    flex: 1; /* Take up remaining space on the left */
+    padding-right: 20px; /* Add spacing between info and image */
+}
+
+.v-image-container {
+    flex: 1; /* Take up remaining space on the right */
+    text-align: center; /* Center-align the image and its caption */
+}
+
+.v-image-detail {
+    width: 300px; /* Adjust the fixed width as needed */
+    height: 400px; /* Adjust the fixed height as needed */
+    object-fit: cover;
+}
+
+/* Additional styling as needed */
+/* Review Form Container */
+.review-form {
+    background-color: #f4e1d2; /* Background color */
+    padding: 20px; /* Add padding */
+
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333333; /* Soft black for text */
+}
+
+/* Review Textarea */
+.review-textarea {
+    width: 80%; /* Full width */
+    padding: 10px; /* Add padding */
+    margin-bottom: 10px; /* Add spacing between elements */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    align-items: center;
+}
+
+/* Review Rating Input */
+.add-review-rating{
+    width: 40%; /* Full width */
+    padding: 10px; /* Add padding */
+    margin-bottom: 10px; /* Add spacing between elements */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    align-items: center;
+}
+
+/* Review Submit Button */
+.review-submit-button {
+    background-color: #5c3c1f; /* Background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Add padding */
+    border: none; /* Remove the border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Add pointer cursor */
+}
+
+/* Hover effect for Submit Button */
+.review-submit-button:hover {
+    background-color: #8a5a33; /* Change background color on hover */
+}

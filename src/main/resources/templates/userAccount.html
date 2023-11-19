@@ -3,32 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${userInfo.username} + ' - Profile'">User Account</title>
-    <!-- Add your CSS links here -->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/popWindow.js"></script>
 </head>
 <body>
+<div th:replace="~{index :: navbar}"></div>
 <h1>Welcome, <span th:text="${userInfo.username}">Username</span>!</h1>
 
 
 
 <!-- Display Reviews -->
-<h2>Your Reviews</h2>
+<h2  >Your Reviews</h2>
 <div th:if="${reviewList.empty}">
     <p>No reviews yet.</p>
 </div>
-<div th:unless="${reviewList.empty}">
-    <ul>
-        <li th:each="review : ${reviewList}">
-            <p th:if="${review.venue?.name}" ><strong>Venue:</strong> <span th:text="${review.venue.name}"></span></p>
-            <p th:if="${review.vendor?.name}"><strong>Vendor:</strong> <span th:text="${review.vendor.name}"></span></p>
 
-            <p><strong>Comment:</strong> <span th:text="${review.content}"></span></p>
-            <p><strong>Rating:</strong> <span th:text="${review.rating}"></span></p>
-            <p><strong>Created Date:</strong> <span th:text="${#temporals.format(review.createdDate, 'yyyy-MM-dd')}"></span></p>
-            <p><strong>Last Edit Date:</strong> <span th:text="${#temporals.format(review.lastEditDate, 'yyyy-MM-dd')}"></span></p>
 
-          </li>
-    </ul>
+<div th:if="${!reviewList.empty}" class="review-container">
+    <div th:each="review : ${reviewList}" class="review-item">
+        <div class="review-header">
+            <div class="review-title">
+                <p th:if="${review.venue?.name}">Venue: <span th:text="${review.venue.name}"></span></p>
+                <p th:if="${review.vendor?.name}">Vendor: <span th:text="${review.vendor.name}"></span></p>
+            </div>
+            <div class="review-rating">
+                <p>Rating: <span th:text="${review.rating}"></span></p>
+            </div>
+        </div>
+        <div class="review-content">
+            <p>Comment: <span th:text="${review.content}"></span></p>
+        </div>
+        <div class="review-dates">
+            <p>Created Date: <span th:text="${#temporals.format(review.createdDate, 'yyyy-MM-dd')}"></span></p>
+            <p>Last Edit Date: <span th:text="${#temporals.format(review.lastEditDate, 'yyyy-MM-dd')}"></span></p>
+        </div>
+        <div class="review-actions">
+            <a th:href="@{/deleteReview/{reviewId}(reviewId=${review.id})}" class="delete-review" style="display: inline-block; padding: 5px 10px ">Delete</a>
+        </div>
+    </div>
 </div>
 
+
+
+<div id="contactModal" style="display:none;">
+    <div style="background-color: white; padding: 20px; border-radius: 5px; text-align: center;">
+        <h2>Interested in Listing Your Business?</h2>
+        <p>Contact us now to get more information!</p>
+        <button id="contactButton" style="padding: 10px 20px; background-color: #5c3c1f; color: white; border: none; border-radius: 5px;">Contact Us</button>
+        <button id="closeButton" style="padding: 10px 20px; background-color: #e7b789; color: white; border: none; border-radius: 5px;">Later</button>
+
+    </div>
+</div>
 </body>
 </html>

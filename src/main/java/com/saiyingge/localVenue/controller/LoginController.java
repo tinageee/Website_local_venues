@@ -19,10 +19,10 @@ public class LoginController {
     {
         return "login";
     }
+    @GetMapping("/contactUs")
+    public String contactUs() {
+        return "contactUs"; // This should match the name of your Thymeleaf template for the contact page
+    }
 
-//    @RequestMapping("/home")
-//    public String redirectToAccount()
-//    {
-//        return "redirect:/account";
-//    }
+
 }

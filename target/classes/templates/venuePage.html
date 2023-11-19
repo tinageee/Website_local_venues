@@ -2,56 +2,84 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${venue.name}">Venue Detail</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/popWindow.js"></script>
 </head>
 <body>
-<h1 th:text="${venue.name}">Venue Name</h1>
-<p><strong>Location:</strong> <span th:text="${venue.location}"></span></p>
-<p><strong>Description:</strong> <span th:text="${venue.description}"></span></p>
-<p><strong>Facility Details:</strong> <span th:text="${venue.facilityDetails}"></span></p>
-<p><strong>Opening Hours:</strong> <span th:text="${venue.openingHours}"></span></p>
-<p><strong>Type:</strong> <span th:text="${venue.type}"></span></p>
-<p><strong>Fee:</strong> <span th:text="${venue.fee}"></span></p>
-<p><strong>Zip Code:</strong> <span th:text="${venue.zipCode}"></span></p>
-<p><strong>Contact Information:</strong> <span th:text="${venue.contactInformation}"></span></p>
-<p><strong>Website:</strong> <a th:href="${venue.website}" th:text="${venue.website}"></a></p>
-<p><strong>Image:</strong> <img th:src="${venue.imageUrl}" alt="Venue Image" /></p>
+<div th:replace="~{index :: navbar}"></div>
 
+<h1 th:text="${venue.name}">Venue Name</h1>
+<div class="v-container">
+    <div class="venue-info">
+        <p><strong>Location:</strong> <span th:text="${venue.location}"></span></p>
+        <p><strong>Description:</strong> <span th:text="${venue.description}"></span></p>
+        <p><strong>Facility Details:</strong> <span th:text="${venue.facilityDetails}"></span></p>
+        <p><strong>Opening Hours:</strong> <span th:text="${venue.openingHours}"></span></p>
+        <p><strong>Type:</strong> <span th:text="${venue.type}"></span></p>
+        <p><strong>Fee:</strong> <span th:text="${venue.fee}"></span></p>
+        <p><strong>Zip Code:</strong> <span th:text="${venue.zipCode}"></span></p>
+        <p><strong>Contact Information:</strong> <span th:text="${venue.contactInformation}"></span></p>
+        <p><strong>Website:</strong> <a th:href="${venue.website}" th:text="${venue.website}"></a></p>
+    </div>
+    <div class="v-image-container">
+        <p><img th:src="${venue.imageUrl}" alt="Venue Image" class="v-image-detail"/></p>
+    </div>
+</div>
 <h2>Reviews</h2>
 <div th:if="${reviews.empty}">
     <p>No reviews yet.</p>
 </div>
-<div th:unless="${reviews.empty}">
-    <ul>
-        <li th:each="review : ${reviews}">
-            <p><strong> Comment:</strong> <span th:text="${review.content}"></span></p>
-            <p><strong>Rating:</strong> <span th:text="${review.rating}"></span></p>
-            <p><strong>Reviewer:</strong> <span th:text="${review.user.username}"></span></p>
-            <p><strong>Last Edit Date:</strong>
-<!--                only show the date-->
-                <span th:text="${#temporals.format(review.lastEditDate, 'yyyy-MM-dd')}"></span>
-            </p>
+<div th:unless="${reviews.empty}" class="review-container">
 
-        </li>
-    </ul>
+    <div th:each="review : ${reviews}" class="review-item">
+        <div class="review-content">
+            <p>Comment: <span th:text="${review.content}"></span></p>
+        </div>
+        <div class="review-info-inV">
+            <p>Rating: <span th:text="${review.rating}"></span></p>
+            <p>Reviewer: <span th:text="${review.user.username}"></span></p>
+
+            <p>Last Edit Date: <span th:text="${#temporals.format(review.lastEditDate, 'yyyy-MM-dd')}"></span></p>
+        </div>
+
+    </div>
+
 </div>
 
-<div th:if="${isLoggedIn}">
+<div th:if="${isLoggedIn}" class="review-form">
     <h3>Submit a Review</h3>
     <form th:action="@{/submitVenueReview}" method="post">
-        <input type="hidden" name="venueId" th:value="${venue.id}" />
-        <textarea name="content" placeholder="Enter your review here" required></textarea>
+        <input type="hidden" name="venueId" th:value="${venue.id}"/>
+        <textarea name="content" placeholder="Enter your review here" required class="review-textarea"></textarea>
 
-        <input type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" required />
+        <input type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" required
+               class="add-review-rating"/>
 
-        <button type="submit">Submit Review</button>
+        <button type="submit" class="review-submit-button">Submit Review</button>
     </form>
+
 </div>
 
 <div th:unless="${isLoggedIn}">
     <!-- Message and login button for users who are not logged in -->
-    <p>To leave a review, please <a href="/login">log in</a>.</p>
+    <p>To leave a review, please <a href="/login">log in</a></p>
 </div>
 
-<a href="/venueList">Back to Venue List</a>
+<a href="/venueList" class="back_button">Back to Venue List</a>
+
+<div id="contactModal" style="display:none;">
+    <div style="background-color: white; padding: 20px; border-radius: 5px; text-align: center;">
+        <h2>Interested in Listing Your Business?</h2>
+        <p>Contact us now to get more information!</p>
+        <button id="contactButton"
+                style="padding: 10px 20px; background-color: #5c3c1f; color: white; border: none; border-radius: 5px;">
+            Contact Us
+        </button>
+        <button id="closeButton"
+                style="padding: 10px 20px; background-color: #e7b789; color: white; border: none; border-radius: 5px;">
+            Later
+        </button>
+    </div>
+</div>
 </body>
 </html>

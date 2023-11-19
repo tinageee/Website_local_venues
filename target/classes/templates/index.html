@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" >
+
 <head>
     <meta charset="UTF-8">
-    <title>Landing Page</title>
+    <title>Support Locals - LocalBizHub</title>
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
-<h1>This Landing Page</h1>
+<div th:fragment="navbar">
+    <div id="navbar">
+    <ul>
+        <li><a th:href="@{/}">LocalBizHub</a></li>
+        <li><a th:href="@{/venueList}">Venues</a></li>
+        <li><a th:href="@{/vendorList}">Vendors</a></li>
+        <li><a th:href="@{/account}">Your Account</a></li>
+        <li><a th:href="@{/contactUs}">Contact Us</a></li>
+        <!-- Show for unauthenticated users -->
+        <li th:if="${!isLoggedIn}">
+            <a th:href="@{/login}">Log in</a> /
+            <a th:href="@{/form}">Sign Up</a>
+        </li>
+        <!-- Show for authenticated users -->
+        <li th:if="${isLoggedIn}">
+            <a th:href="@{/logout}">Sign Out</a>
 
-<br><br>
-<nav id="menu">
-  <ul>
-    <li><a th:href="@{/login}">Login</a></li>
-    <li><a th:href="@{/form}">Sign Up</a></li>
-  </ul>
-</nav>
-<h1>Welcome to Our Homepage</h1>
-
+        </li>
+    </ul>
+    </div>
+</div>
+<div class="contact-container">
+<h1>Welcome to LocalBizHub</h1>
+<p>
+    At LocalBizHub, we are passionate about promoting and supporting local businesses in our community. Our Venue List showcases a diverse range of local establishments, each with its unique charm and offerings. By exploring and patronizing these businesses, you're not only discovering hidden gems but also contributing to the growth and vitality of our local economy.
+</p>
+<p>
+    Whether you're looking for a cozy cafe, a family-owned restaurant, or an event venue, our platform connects you with the heart and soul of our community. Join us in celebrating the spirit of entrepreneurship, and together, let's make a difference by supporting local businesses.
+</p>
 <!-- Link to the Vendor List -->
 <p>
     <a href="http://localhost:8080/vendorList">View Vendor List</a>
@@ -25,6 +46,21 @@
 <p>
     <a href="http://localhost:8080/venueList">View Venue List</a>
 </p>
+<p>
+    <a href="http://localhost:8080/ContactUs">List your business</a>
+</p>
+</div>
 
+<div id="contactModal" style="display:none;">
+    <div style="background-color: white; padding: 20px; border-radius: 5px; text-align: center;">
+        <h2>Interested in Listing Your Business?</h2>
+        <p>Contact us now to get more information!</p>
+        <button id="contactButton" style="padding: 10px 20px; background-color: #5c3c1f; color: white; border: none; border-radius: 5px;">Contact Us</button>
+        <button id="closeButton" style="padding: 10px 20px; background-color: #e7b789; color: white; border: none; border-radius: 5px;">Later</button>
+
+    </div>
+</div>
+
+<script src="/js/popWindow.js"></script>
 </body>
 </html>

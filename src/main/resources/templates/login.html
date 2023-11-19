@@ -9,30 +9,25 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
   <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
+<div th:replace="~{index :: navbar}"></div>
 <br><br>
-<nav id="menu">
-  <ul>
-    <li><a th:href="@{/login}">Login</a></li>
-    <li><a th:href="@{/form}">Sign Up</a></li>
-  </ul>
 
-</nav>
 <div class="container">
   <form class="form-signin" method="post" action="#" th:action="@{/login}">
-    <h2 class="form-signin-heading">Please sign in</h2>
+    <h2 class="form-signin-heading" style="color: #5c3c1f; font-family: 'Arial', sans-serif;">Please sign in</h2>
     <p>
       <label for="username" class="sr-only">Username</label>
-      <input type="text" id="username"  name="username" class="form-control" placeholder="Username" required="" autofocus="">
+      <input type="text" id="username"  name="username" class="form-control" placeholder="Email Address" required="" autofocus="">
     </p>
+<!--    the code later convert email address to username for security operation-->
     <p>
       <label for="password" class="sr-only">Password</label>
       <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
     </p>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="custom-signin-button" type="submit">Sign in</button>
   </form>
 </div>
 

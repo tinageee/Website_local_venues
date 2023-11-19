@@ -1,8 +1,6 @@
 package com.saiyingge.localVenue.security;
 
 import com.saiyingge.localVenue.service.UserService;
-import org.modelmapper.ModelMapper;
-import com.saiyingge.localVenue.security.CustomLoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,11 +43,11 @@ public class SecurityConfig {
         http.authorizeHttpRequests(
                         auth -> auth.requestMatchers(
                                         "/",
-                                        "/css/*", "/js/*","/img/*",
+                                        "/css/*", "/static.js/*","/img/*",
                                         "/form", "/sign-up-process", "/confirmation-page",
                                         "/login","/home",
                                         "/venueList","/venues/**",
-                                        "/vendorList","/vendors/**"
+                                        "/vendorList","/vendors/**", "/contactUs"
                                 ).permitAll()
                                 .requestMatchers("/account")
                                 .hasAnyRole("USER")
@@ -67,6 +65,7 @@ public class SecurityConfig {
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/")
                         .permitAll());
 
         return http.build();

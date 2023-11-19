@@ -3,6 +3,7 @@ package com.saiyingge.localVenue.controller;
 
 import com.saiyingge.localVenue.dto.UserDTO;
 import com.saiyingge.localVenue.service.UserService;
+import com.saiyingge.localVenue.service.UserServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SignUpController {
 
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @Autowired
-    public SignUpController(UserService userService) {
-        this.userService = userService;
+    public SignUpController(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 
     @GetMapping("/form")
@@ -40,7 +41,7 @@ public class SignUpController {
             return "sign-up";
         }
 
-        userService.saveUser(userDTO);
+        userServiceImpl.saveUser(userDTO);
 
         return "redirect:/confirmation-page";
     }
