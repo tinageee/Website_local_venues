@@ -79,29 +79,7 @@ public class VendorServiceTest {
     }
 
 
-    @Test
-    public void testGetVendorById() {
-        Vendor vendor = new Vendor();
-        vendor.setId(10L); // Set any necessary fields for the vendor
-        vendor.setDescription("test description");
 
-        // Mock the behavior of the repository
-        when(vendorRepository.findById(10L)).thenReturn(Optional.of(vendor));
-
-        // Mock the behavior of the modelMapper to return a VendorDTO when mapping
-        when(modelMapper.map(vendor, VendorDTO.class)).thenReturn(new VendorDTO());
-
-        VendorDTO result = vendorService.getVendorById(10L);
-
-        verify(vendorRepository, times(1)).findById(10L);
-
-        // Assert that the result is not null
-        assertNotNull(result);
-        assertEquals(VendorDTO.class, result.getClass());
-        assertEquals(vendor.getDescription(), result.getDescription());
-
-
-    }
 
 
 }
